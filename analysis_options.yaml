@@ -1,0 +1,14 @@
+include: package:effective_dart/analysis_options.yaml
+
+analyzer:
+  exclude: [build/**, plugins/**]
+  errors:
+    one_member_abstracts: ignore
+    prefer_mixin: ignore
+    public_member_api_docs: ignore
+    use_setters_to_change_properties: ignore
+    unused_element: error
+    unused_field: error
+    unused_local_variable: error
+    prefer_relative_imports: error
+    directives_ordering: error
