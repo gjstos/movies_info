@@ -30,7 +30,7 @@ packages:
     source: hosted
     version: "1.6.0"
   async:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: async
       url: "https://pub.dartlang.org"
@@ -183,6 +183,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
+  coverage:
+    dependency: transitive
+    description:
+      name: coverage
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.14.2"
   crypto:
     dependency: transitive
     description:
@@ -380,6 +387,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.1"
+  lcov:
+    dependency: transitive
+    description:
+      name: lcov
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.7.0"
   logging:
     dependency: transitive
     description:
@@ -588,6 +602,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.9.10+1"
+  source_maps:
+    dependency: transitive
+    description:
+      name: source_maps
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.10.9"
   source_span:
     dependency: transitive
     description:
@@ -637,6 +658,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.19-nullsafety.2"
+  test_coverage:
+    dependency: "direct dev"
+    description:
+      name: test_coverage
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.0"
   time:
     dependency: transitive
     description:
@@ -665,6 +693,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0-nullsafety.3"
+  vm_service:
+    dependency: transitive
+    description:
+      name: vm_service
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.5.0"
   watcher:
     dependency: transitive
     description:

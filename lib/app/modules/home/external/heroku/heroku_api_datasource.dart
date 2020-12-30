@@ -1,9 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_modular/flutter_modular_annotations.dart';
 
 import '../../domain/errors/errors.dart';
 import '../../infra/datasource/i_movies_list_datasource.dart';
 import '../../infra/models/movie_model.dart';
 
+part 'heroku_api_datasource.g.dart';
+
+@Injectable()
 class HerokuApiDatasource implements IMoviesListDatasource {
   final Dio dio;
 

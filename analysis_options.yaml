@@ -12,3 +12,4 @@ analyzer:
     unused_local_variable: error
     prefer_relative_imports: error
     directives_ordering: error
+    unnecessary_lambdas: ignore

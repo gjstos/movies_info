@@ -9,7 +9,7 @@ import '../models/movie_model.dart';
 
 part 'movies_list_repository.g.dart';
 
-@Injectable(singleton: false)
+@Injectable()
 class MoviesListRepository implements IMoviesListRepository {
   final IMoviesListDatasource datasource;
 

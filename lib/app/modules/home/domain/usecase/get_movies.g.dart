@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'movies_list_repository.dart';
+part of 'get_movies.dart';
 
 // **************************************************************************
 // InjectionGenerator
 // **************************************************************************
 
-final $MoviesListRepository = BindInject(
-  (i) => MoviesListRepository(i<IMoviesListDatasource>()),
+final $GetMovies = BindInject(
+  (i) => GetMovies(i<IMoviesListRepository>()),
   singleton: true,
   lazy: true,
 );
