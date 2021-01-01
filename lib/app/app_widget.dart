@@ -11,6 +11,8 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
         textTheme: GoogleFonts.nanumGothicTextTheme(),
         accentColor: Colors.white60,
+        scaffoldBackgroundColor: Colors.grey[900],
+        appBarTheme: ThemeData().appBarTheme.copyWith(color: Colors.black),
       ),
       initialRoute: '/',
       onGenerateRoute: Modular.generateRoute,

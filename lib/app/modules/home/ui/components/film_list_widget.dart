@@ -35,6 +35,19 @@ class FilmListWidget extends StatelessWidget {
           itemCount: movies.length,
           viewportFraction: 0.8,
           scale: 0.9,
+          layout: SwiperLayout.CUSTOM,
+          itemWidth: 300.0,
+          itemHeight: _size * 0.67,
+          customLayoutOption: CustomLayoutOption(
+            startIndex: -1,
+            stateCount: 3,
+          ).addRotate([-45.0 / 180, 0.0, 45.0 / 180]).addTranslate(
+            [
+              const Offset(-370.0, -40.0),
+              const Offset(0.0, 0.0),
+              const Offset(370.0, -40.0)
+            ],
+          ),
         ),
       ),
     );

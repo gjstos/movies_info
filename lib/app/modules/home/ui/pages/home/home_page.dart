@@ -19,19 +19,16 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       body: DefaultTabController(
         length: 2,
         child: Scaffold(
-          backgroundColor: Colors.grey[900],
           appBar: AppBar(
             title: Text('MoviesInfo'),
             centerTitle: true,
-            backgroundColor: Colors.black,
             bottom: TabBar(
               tabs: [
-                Tab(text: 'Em Cartaz'),
-                Tab(text: 'Favoritos'),
+                Tab(text: 'EM CARTAZ'),
+                Tab(text: 'FAVORITOS'),
               ],
             ),
           ),

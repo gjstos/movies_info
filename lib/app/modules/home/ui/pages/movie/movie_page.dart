@@ -9,8 +9,6 @@ class MoviePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(
-        '${movie.data}, ${movie.genero}, ${movie.isFavorite}, ${movie.link}, ${movie.poster}, ${movie.sinopse}, ${movie.sinopseFull}, ${movie.titulo}');
     return Scaffold(
       appBar: AppBar(),
     );
