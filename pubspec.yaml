@@ -26,6 +26,7 @@ scripts:
     mobx_build: $runner build
     mobx_watch: $clean & $get & $runner watch
     mobx_build_clean: $clean & $get & $runner build --delete-conflicting-outputs
+    mobx_watch_clean: $clean & $get & $runner watch --delete-conflicting-outputs
 
 
 
@@ -33,11 +34,12 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  async: ^2.4.2
+  flutter_svg:
+  flutter_swiper: ^1.1.6
+  cached_network_image: ^2.5.0
   dartz: ^0.9.2
   hive_flutter: ^0.3.1
   hive: ^1.4.4+1
-  connectivity: ^2.0.2
   animations: ^1.1.2
   shimmer: ^1.1.2
   google_fonts: ^1.1.1
@@ -76,9 +78,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/loading.svg
+    - assets/not_found.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

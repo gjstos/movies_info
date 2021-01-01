@@ -11,6 +11,7 @@ class MovieModel extends Movie {
     @required String sinopse,
     @required String sinopseFull,
     @required String titulo,
+    bool isFavorite = false,
   }) : super(
           data: data,
           genero: genero,
@@ -19,6 +20,7 @@ class MovieModel extends Movie {
           sinopse: sinopse,
           sinopseFull: sinopseFull,
           titulo: titulo,
+          isFavorite: isFavorite,
         );
 
   factory MovieModel.fromJson(Map<String, dynamic> json) {
@@ -30,6 +32,7 @@ class MovieModel extends Movie {
       sinopse: json['sinopse'],
       sinopseFull: json['sinopseFull'],
       titulo: json['titulo'],
+      isFavorite: json['isFavorite'] ?? false,
     );
   }
 }

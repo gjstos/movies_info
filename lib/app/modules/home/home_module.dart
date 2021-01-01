@@ -5,7 +5,8 @@ import 'domain/usecase/get_movies.dart';
 import 'external/heroku/heroku_api_datasource.dart';
 import 'infra/repositories/movies_list_repository.dart';
 import 'ui/controllers/home_controller.dart';
-import 'ui/pages/home_page.dart';
+import 'ui/pages/home/home_page.dart';
+import 'ui/pages/movie/movie_page.dart';
 
 class HomeModule extends ChildModule {
   @override
@@ -20,6 +21,10 @@ class HomeModule extends ChildModule {
   @override
   List<ModularRouter> get routers => [
         ModularRouter(Modular.initialRoute, child: (_, args) => HomePage()),
+        ModularRouter(
+          '/movie',
+          child: (_, args) => MoviePage(movie: args.data),
+        ),
       ];
 
   static Inject get to => Inject<HomeModule>.of();
