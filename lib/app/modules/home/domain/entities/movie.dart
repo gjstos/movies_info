@@ -2,15 +2,15 @@ import 'package:flutter/foundation.dart';
 
 class Movie {
   final String data;
-  final String genero;
+  final List<String> genero;
   final String link;
   final String poster;
   final String sinopse;
   final String sinopseFull;
   final String titulo;
-  final bool isFavorite;
+  bool isFavorite;
 
-  const Movie({
+  Movie({
     @required this.data,
     @required this.genero,
     @required this.link,

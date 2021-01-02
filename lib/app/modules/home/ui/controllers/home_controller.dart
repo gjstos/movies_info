@@ -1,8 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../domain/entities/movie.dart';
-import '../../domain/usecase/get_movies.dart';
+import '../../domain/usecase/movies/get_movies.dart';
 import '../../infra/models/movie_model.dart';
 import '../states/movies_get_state.dart';
 
@@ -15,8 +17,7 @@ abstract class _HomeControllerBase with Store {
   final GetMovies getMovies;
 
   _HomeControllerBase(this.getMovies) {
-    updateState(LoadingState());
-    Future.delayed(Duration(milliseconds: 1)).then((_) async {
+    Future.delayed(const Duration(milliseconds: 0)).then((_) async {
       await runGetMovies();
     });
   }
@@ -25,30 +26,29 @@ abstract class _HomeControllerBase with Store {
   ObservableList<Movie> movies = <Movie>[].asObservable();
 
   @observable
-  List<bool> imagesWasDownloaded = <bool>[];
-
-  @observable
   GetMoviesState state = StartState();
 
   @action
   Future<void> runGetMovies() async {
-    var result = await getMovies();
+    var hasNet = await _checkInternetConnection();
+    if (hasNet) {
+      updateState(LoadingState());
+      var result = await getMovies();
 
-    if (result.isRight()) {
-      result.map((r) {
-        imagesWasDownloaded = List.generate(r.length, (index) => false);
-        movies = r.asObservable();
-      });
+      result.map((r) => movies = r.asObservable());
+
+      if (movies.isEmpty) {
+        updateState(StartState());
+      } else {
+        updateState(SuccessState());
+      }
+    } else {
+      updateState(NoInternetConnectionState());
     }
-    updateState(SuccessState());
   }
 
   @action
   void updateState(GetMoviesState value) => state = value;
-
-  @action
-  void changeImageDownloadedStatus(int index) =>
-      imagesWasDownloaded[index] = !imagesWasDownloaded[index];
 
   @action
   void favoriteMovie(int index) {
@@ -65,5 +65,18 @@ abstract class _HomeControllerBase with Store {
     };
     movies[index] = MovieModel.fromJson(movie);
     movies = List<Movie>.from(movies).asObservable();
+  }
+
+  Future<bool> _checkInternetConnection() async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        return true;
+      }
+    } on SocketException catch (_) {
+      return false;
+    }
+
+    return false;
   }
 }

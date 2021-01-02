@@ -34,22 +34,6 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
-  final _$imagesWasDownloadedAtom =
-      Atom(name: '_HomeControllerBase.imagesWasDownloaded');
-
-  @override
-  List<bool> get imagesWasDownloaded {
-    _$imagesWasDownloadedAtom.reportRead();
-    return super.imagesWasDownloaded;
-  }
-
-  @override
-  set imagesWasDownloaded(List<bool> value) {
-    _$imagesWasDownloadedAtom.reportWrite(value, super.imagesWasDownloaded, () {
-      super.imagesWasDownloaded = value;
-    });
-  }
-
   final _$stateAtom = Atom(name: '_HomeControllerBase.state');
 
   @override
@@ -88,17 +72,6 @@ mixin _$HomeController on _HomeControllerBase, Store {
   }
 
   @override
-  void changeImageDownloadedStatus(int index) {
-    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
-        name: '_HomeControllerBase.changeImageDownloadedStatus');
-    try {
-      return super.changeImageDownloadedStatus(index);
-    } finally {
-      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void favoriteMovie(int index) {
     final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
         name: '_HomeControllerBase.favoriteMovie');
@@ -113,7 +86,6 @@ mixin _$HomeController on _HomeControllerBase, Store {
   String toString() {
     return '''
 movies: ${movies},
-imagesWasDownloaded: ${imagesWasDownloaded},
 state: ${state}
     ''';
   }

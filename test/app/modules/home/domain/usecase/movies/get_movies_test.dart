@@ -4,7 +4,7 @@ import 'package:mockito/mockito.dart';
 import 'package:movies_info/app/modules/home/domain/entities/movie.dart';
 import 'package:movies_info/app/modules/home/domain/errors/errors.dart';
 import 'package:movies_info/app/modules/home/domain/repositories/i_movies_list_repository.dart';
-import 'package:movies_info/app/modules/home/domain/usecase/get_movies.dart';
+import 'package:movies_info/app/modules/home/domain/usecase/movies/get_movies.dart';
 
 class MockMoviesListRepository extends Mock implements IMoviesListRepository {}
 
@@ -14,17 +14,16 @@ void main() {
 
   test('Deve retornar uma lista de Movie', () async {
     when(repository.getMovies()).thenAnswer(
-      (_) async => right(
+      (_) async => await right(
         <Movie>[
           Movie(
-            data: null,
-            genero: null,
-            link: null,
-            poster: null,
-            sinopse: null,
-            sinopseFull: null,
-            titulo: null,
-          )
+              data: null,
+              genero: null,
+              link: null,
+              poster: null,
+              sinopse: null,
+              sinopseFull: null,
+              titulo: null)
         ],
       ),
     );

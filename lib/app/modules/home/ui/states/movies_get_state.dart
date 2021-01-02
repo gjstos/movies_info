@@ -15,6 +15,10 @@ class ErrorState implements GetMoviesState {
   const ErrorState(this.error);
 }
 
+class NoInternetConnectionState implements GetMoviesState {
+  const NoInternetConnectionState();
+}
+
 class SuccessState implements GetMoviesState {
   const SuccessState();
 }

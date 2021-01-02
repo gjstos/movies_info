@@ -1,8 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 
 import '../../domain/entities/movie.dart';
+import 'image_builder.dart';
 
 class FilmCard extends StatelessWidget {
   final Movie movie;
@@ -26,7 +25,7 @@ class FilmCard extends StatelessWidget {
         child: Stack(
           fit: StackFit.expand,
           children: [
-            _buildImage(movie.poster),
+            ImageBuilder(source: movie.poster),
             Positioned(
               top: 15,
               right: 15,
@@ -35,7 +34,7 @@ class FilmCard extends StatelessWidget {
                 child: IconButton(
                   icon: Icon(
                     movie.isFavorite ? Icons.favorite : Icons.favorite_border,
-                    color: movie.isFavorite ? Colors.red : Colors.grey,
+                    color: movie.isFavorite ? Colors.red : Color(0xffdcdcdc),
                     size: 35,
                   ),
                   onPressed: onFavorite,
@@ -56,39 +55,10 @@ class FilmCard extends StatelessWidget {
     );
   }
 
-  Widget _buildImage(String source) {
-    return CachedNetworkImage(
-      imageUrl: source,
-      alignment: Alignment.center,
-      fit: BoxFit.fill,
-      imageBuilder: (_, imageProvider) {
-        return Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            image: DecorationImage(image: imageProvider, fit: BoxFit.fill),
-          ),
-        );
-      },
-      placeholder: (context, url) {
-        return Shimmer.fromColors(
-          child: Container(
-            color: Colors.white,
-          ),
-          enabled: true,
-          baseColor: Colors.grey[300],
-          highlightColor: Colors.grey[100],
-        );
-      },
-      errorWidget: (context, url, error) => Icon(Icons.broken_image),
-    );
-  }
-
   List<Widget> _genders() {
-    var list = movie.genero.split(', ');
-
     return List.generate(
-      list.length,
-      (index) => Chip(label: Text(list[index])),
+      movie.genero.length,
+      (index) => Chip(label: Text(movie.genero[index])),
     );
   }
 

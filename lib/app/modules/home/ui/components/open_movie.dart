@@ -16,7 +16,7 @@ class OpenMovie extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OpenContainer(
-      closedColor: Colors.grey[900],
+      closedColor: Colors.black,
       closedBuilder: (_, openContainer) {
         return GestureDetector(
           child: closedMovie,

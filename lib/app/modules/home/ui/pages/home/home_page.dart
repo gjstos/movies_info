@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../../../shared/components/state_widget.dart';
 import '../../components/film_list_widget.dart';
@@ -35,33 +36,59 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: [
-              Observer(
-                builder: (_) {
-                  if (controller.state.runtimeType == StartState) {
-                    return StateWidget(
-                      label: 'Nada encontrado!',
-                      svgPath: 'assets/nothing_found.svg',
-                    );
-                  } else if (controller.state.runtimeType == LoadingState) {
-                    return StateWidget(
-                      label: 'Carregando...',
-                      svgPath: 'assets/loading.svg',
-                    );
-                  } else {
-                    return FilmListWidget(
-                      movies: controller.movies,
-                      onFavorite: (index) {
-                        controller.favoriteMovie(index);
-                      },
-                    );
-                  }
-                },
-              ),
+              _buildMoviesTab(),
               Container(),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildMoviesTab() {
+    return RefreshIndicator(
+      child: Stack(
+        children: [
+          ListView(),
+          Observer(
+            builder: (_) {
+              if (controller.state.runtimeType == StartState) {
+                return StateWidget(
+                  label: 'Nada encontrado!',
+                  svgPath: 'assets/not_found.svg',
+                );
+              } else if (controller.state.runtimeType == LoadingState &&
+                  controller.movies.isEmpty) {
+                return StateWidget(
+                  label: 'Carregando...',
+                  svgPath: 'assets/loading.svg',
+                );
+              } else if (controller.state.runtimeType ==
+                      NoInternetConnectionState &&
+                  controller.movies.isEmpty) {
+                return StateWidget(
+                  label: 'Sem conexão à internet...',
+                  svgPath: 'assets/not_found.svg',
+                );
+              } else {
+                return FilmListWidget(
+                  movies: controller.movies,
+                  onFavorite: (index) {
+                    var _isFav = controller.movies[index].isFavorite;
+                    var _isFavMessage = _isFav ? 'desfavoritado' : 'favoritado';
+                    controller.favoriteMovie(index);
+                    Fluttertoast.showToast(
+                      msg:
+                          '${controller.movies[index].titulo} $_isFavMessage com sucesso!',
+                    );
+                  },
+                );
+              }
+            },
+          ),
+        ],
+      ),
+      onRefresh: controller.runGetMovies,
     );
   }
 }

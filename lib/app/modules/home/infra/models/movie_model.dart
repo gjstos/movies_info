@@ -5,7 +5,7 @@ import '../../domain/entities/movie.dart';
 class MovieModel extends Movie {
   MovieModel({
     @required String data,
-    @required String genero,
+    @required List<String> genero,
     @required String link,
     @required String poster,
     @required String sinopse,
@@ -26,7 +26,7 @@ class MovieModel extends Movie {
   factory MovieModel.fromJson(Map<String, dynamic> json) {
     return MovieModel(
       data: json['data'],
-      genero: json['genero'],
+      genero: _stringToList(json['genero']),
       link: json['link'],
       poster: json['poster'],
       sinopse: json['sinopse'],
@@ -34,5 +34,9 @@ class MovieModel extends Movie {
       titulo: json['titulo'],
       isFavorite: json['isFavorite'] ?? false,
     );
+  }
+
+  static List<String> _stringToList(String string) {
+    return string.split(', ');
   }
 }

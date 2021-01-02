@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_modular/flutter_modular_annotations.dart';
 
-import '../../domain/errors/errors.dart';
 import '../../infra/datasource/i_movies_list_datasource.dart';
 import '../../infra/models/movie_model.dart';
 
@@ -16,16 +15,15 @@ class HerokuApiDatasource implements IMoviesListDatasource {
 
   @override
   Future<List<MovieModel>> getMovies() async {
+    var list = <MovieModel>[];
     var response =
         await dio.get('https://filmespy.herokuapp.com/api/v1/filmes');
 
     if (response.statusCode == 200) {
       var jList = response.data['filmes'] as List;
-      var list = jList.map((item) => MovieModel.fromJson(item)).toList();
-
-      return list;
-    } else {
-      throw GetFail();
+      list = jList.map((item) => MovieModel.fromJson(item)).toList();
     }
+
+    return list;
   }
 }

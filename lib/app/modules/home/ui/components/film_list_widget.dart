@@ -19,7 +19,7 @@ class FilmListWidget extends StatelessWidget {
 
     return Center(
       child: SizedBox(
-        height: _size * 0.67,
+        height: _size * 0.7,
         child: Swiper(
           itemBuilder: (context, index) {
             return OpenMovie(
@@ -37,7 +37,7 @@ class FilmListWidget extends StatelessWidget {
           scale: 0.9,
           layout: SwiperLayout.CUSTOM,
           itemWidth: 300.0,
-          itemHeight: _size * 0.67,
+          itemHeight: _size * 0.648,
           customLayoutOption: CustomLayoutOption(
             startIndex: -1,
             stateCount: 3,

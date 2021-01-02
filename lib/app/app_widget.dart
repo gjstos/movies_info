@@ -7,12 +7,13 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: Modular.navigatorKey,
-      title: 'Flutter Slidy',
+      title: 'MoviesInfo',
       theme: ThemeData(
         textTheme: GoogleFonts.nanumGothicTextTheme(),
-        accentColor: Colors.white60,
-        scaffoldBackgroundColor: Colors.grey[900],
-        appBarTheme: ThemeData().appBarTheme.copyWith(color: Colors.black),
+        accentColor: Color(0xff6C63FF),
+        scaffoldBackgroundColor: Colors.black,
+        appBarTheme:
+            ThemeData().appBarTheme.copyWith(color: const Color(0xff272727)),
       ),
       initialRoute: '/',
       onGenerateRoute: Modular.generateRoute,
