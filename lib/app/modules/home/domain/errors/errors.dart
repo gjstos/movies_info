@@ -17,3 +17,5 @@ class EmptyListDb extends FailureDatabase {}
 class InvalidSearchTextDb extends FailureDatabase {}
 
 class InexistentItemDb extends FailureDatabase {}
+
+class FullDatabase extends FailureDatabase {}

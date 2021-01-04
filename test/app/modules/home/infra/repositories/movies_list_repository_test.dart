@@ -10,7 +10,7 @@ void main() {
   final datasource = MockMoviesListDatasource();
   final repository = MoviesListRepository(datasource);
 
-  test('deve retornar uma lista de MovieModel', () async {
+  test('GetMovies: Deve retornar uma lista de MovieModel', () async {
     when(datasource.getMovies()).thenAnswer(
       (_) async => <MovieModel>[
         MovieModel(

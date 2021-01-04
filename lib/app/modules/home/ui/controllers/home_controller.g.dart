@@ -7,7 +7,7 @@ part of 'home_controller.dart';
 // **************************************************************************
 
 final $HomeController = BindInject(
-  (i) => HomeController(i<GetMovies>()),
+  (i) => HomeController(i<GetMovies>(), i<DbMoviesFacade>()),
   singleton: true,
   lazy: false,
 );
@@ -57,6 +57,22 @@ mixin _$HomeController on _HomeControllerBase, Store {
     return _$runGetMoviesAsyncAction.run(() => super.runGetMovies());
   }
 
+  final _$updateMoviesAsyncAction =
+      AsyncAction('_HomeControllerBase.updateMovies');
+
+  @override
+  Future<void> updateMovies() {
+    return _$updateMoviesAsyncAction.run(() => super.updateMovies());
+  }
+
+  final _$favoriteMovieAsyncAction =
+      AsyncAction('_HomeControllerBase.favoriteMovie');
+
+  @override
+  Future<bool> favoriteMovie(int index) {
+    return _$favoriteMovieAsyncAction.run(() => super.favoriteMovie(index));
+  }
+
   final _$_HomeControllerBaseActionController =
       ActionController(name: '_HomeControllerBase');
 
@@ -66,17 +82,6 @@ mixin _$HomeController on _HomeControllerBase, Store {
         name: '_HomeControllerBase.updateState');
     try {
       return super.updateState(value);
-    } finally {
-      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void favoriteMovie(int index) {
-    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
-        name: '_HomeControllerBase.favoriteMovie');
-    try {
-      return super.favoriteMovie(index);
     } finally {
       _$_HomeControllerBaseActionController.endAction(_$actionInfo);
     }

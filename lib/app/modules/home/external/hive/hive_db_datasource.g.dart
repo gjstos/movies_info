@@ -7,7 +7,7 @@ part of 'hive_db_datasource.dart';
 // **************************************************************************
 
 final $DbDatasource = BindInject(
-  (i) => DbDatasource(i<Box<Favorite>>()),
+  (i) => DbDatasource(i<Box>()),
   singleton: true,
   lazy: true,
 );

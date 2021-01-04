@@ -1,10 +1,10 @@
-import '../../domain/entities/favorite.dart';
-import '../models/favorite_model.dart';
+import '../../domain/entities/movie.dart';
+import '../models/movie_model.dart';
 
 abstract class IDbDatasource {
-  Future<List<FavoriteModel>> getAllFavorites();
-  Future<List<FavoriteModel>> findFavorite(String textSearch);
-  Future<bool> deleteFavorite(Favorite favorite);
-  Future<bool> insertFavorite(Favorite favorite);
-  Future<bool> updateFavorite(Favorite favorite);
+  Future<List<MovieModel>> getAllMovies();
+  Future<List<MovieModel>> findMovie(String textSearch);
+  Future<bool> deleteMovie(Movie movie);
+  Future<bool> insertMovie(Movie movie);
+  Future<bool> updateMovie(Movie movie);
 }

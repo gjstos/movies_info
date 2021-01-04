@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'update_favorite.dart';
+part of 'insert_favorite.dart';
 
 // **************************************************************************
 // InjectionGenerator
 // **************************************************************************
 
-final $UpdateMovie = BindInject(
-  (i) => UpdateMovie(i<IDbRepository>()),
+final $InsertMovie = BindInject(
+  (i) => InsertMovie(i<IDbRepository>()),
   singleton: true,
   lazy: true,
 );

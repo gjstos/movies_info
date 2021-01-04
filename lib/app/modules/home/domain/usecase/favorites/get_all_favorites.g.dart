@@ -6,8 +6,8 @@ part of 'get_all_favorites.dart';
 // InjectionGenerator
 // **************************************************************************
 
-final $GetAllFavorites = BindInject(
-  (i) => GetAllFavorites(i<IDbRepository>()),
+final $GetAllMovies = BindInject(
+  (i) => GetAllMovies(i<IDbRepository>()),
   singleton: true,
   lazy: true,
 );

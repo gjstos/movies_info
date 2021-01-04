@@ -6,8 +6,8 @@ part of 'search_favorite.dart';
 // InjectionGenerator
 // **************************************************************************
 
-final $SearchFavorite = BindInject(
-  (i) => SearchFavorite(i<IDbRepository>()),
+final $SearchMovie = BindInject(
+  (i) => SearchMovie(i<IDbRepository>()),
   singleton: false,
   lazy: true,
 );

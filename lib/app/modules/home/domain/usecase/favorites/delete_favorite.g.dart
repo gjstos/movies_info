@@ -6,8 +6,8 @@ part of 'delete_favorite.dart';
 // InjectionGenerator
 // **************************************************************************
 
-final $DeleteFavorite = BindInject(
-  (i) => DeleteFavorite(i<IDbRepository>()),
+final $DeleteMovie = BindInject(
+  (i) => DeleteMovie(i<IDbRepository>()),
   singleton: true,
   lazy: true,
 );

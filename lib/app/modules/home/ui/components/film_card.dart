@@ -5,11 +5,11 @@ import 'image_builder.dart';
 
 class FilmCard extends StatelessWidget {
   final Movie movie;
-  final VoidCallback onFavorite;
+  final VoidCallback onMovie;
 
-  const FilmCard({Key key, @required this.movie, this.onFavorite})
+  const FilmCard({Key key, @required this.movie, this.onMovie})
       : assert(movie != null),
-        assert(onFavorite != null),
+        assert(onMovie != null),
         super(key: key);
 
   @override
@@ -30,14 +30,14 @@ class FilmCard extends StatelessWidget {
               top: 15,
               right: 15,
               child: _tooltip(
-                message: movie.isFavorite ? 'Desfavoritar' : 'Favoritar',
+                message: movie.isFav ? 'Desfavoritar' : 'Favoritar',
                 child: IconButton(
                   icon: Icon(
-                    movie.isFavorite ? Icons.favorite : Icons.favorite_border,
-                    color: movie.isFavorite ? Colors.red : Color(0xffdcdcdc),
+                    movie.isFav ? Icons.favorite : Icons.favorite_border,
+                    color: movie.isFav ? Colors.red : Color(0xffdcdcdc),
                     size: 35,
                   ),
-                  onPressed: onFavorite,
+                  onPressed: onMovie,
                 ),
               ),
             ),

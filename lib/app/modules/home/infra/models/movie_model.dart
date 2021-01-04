@@ -11,7 +11,7 @@ class MovieModel extends Movie {
     @required String sinopse,
     @required String sinopseFull,
     @required String titulo,
-    bool isFavorite = false,
+    bool isMovie = false,
   }) : super(
           data: data,
           genero: genero,
@@ -20,19 +20,27 @@ class MovieModel extends Movie {
           sinopse: sinopse,
           sinopseFull: sinopseFull,
           titulo: titulo,
-          isFavorite: isFavorite,
+          isFav: isMovie,
         );
 
   factory MovieModel.fromJson(Map<String, dynamic> json) {
+    var genders;
+
+    if (json['genero'].runtimeType == String) {
+      genders = _stringToList(json['genero']);
+    } else {
+      genders = json['genero'];
+    }
+
     return MovieModel(
       data: json['data'],
-      genero: _stringToList(json['genero']),
+      genero: genders,
       link: json['link'],
       poster: json['poster'],
       sinopse: json['sinopse'],
       sinopseFull: json['sinopseFull'],
       titulo: json['titulo'],
-      isFavorite: json['isFavorite'] ?? false,
+      isMovie: json['isMovie'] ?? false,
     );
   }
 

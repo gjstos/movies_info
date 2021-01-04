@@ -13,3 +13,7 @@ analyzer:
     prefer_relative_imports: error
     directives_ordering: error
     unnecessary_lambdas: ignore
+    avoid_function_literals_in_foreach_calls: ignore
+    
+
+    

@@ -1,22 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'favorite.dart';
+part of 'movie.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class FavoriteAdapter extends TypeAdapter<Favorite> {
+class MovieAdapter extends TypeAdapter<Movie> {
   @override
   final int typeId = 0;
 
   @override
-  Favorite read(BinaryReader reader) {
+  Movie read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Favorite(
+    return Movie(
       data: fields[0] as String,
       genero: (fields[1] as List)?.cast<String>(),
       link: fields[2] as String,
@@ -24,12 +24,12 @@ class FavoriteAdapter extends TypeAdapter<Favorite> {
       sinopse: fields[4] as String,
       sinopseFull: fields[5] as String,
       titulo: fields[6] as String,
-      isFavorite: fields[7] as bool,
+      isFav: fields[7] as bool,
     );
   }
 
   @override
-  void write(BinaryWriter writer, Favorite obj) {
+  void write(BinaryWriter writer, Movie obj) {
     writer
       ..writeByte(8)
       ..writeByte(0)
@@ -47,7 +47,7 @@ class FavoriteAdapter extends TypeAdapter<Favorite> {
       ..writeByte(6)
       ..write(obj.titulo)
       ..writeByte(7)
-      ..write(obj.isFavorite);
+      ..write(obj.isFav);
   }
 
   @override
@@ -56,7 +56,7 @@ class FavoriteAdapter extends TypeAdapter<Favorite> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is FavoriteAdapter &&
+      other is MovieAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
