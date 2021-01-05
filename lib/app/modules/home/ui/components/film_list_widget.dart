@@ -8,9 +8,17 @@ import 'open_movie.dart';
 
 class FilmListWidget extends StatelessWidget {
   final List<Movie> movies;
+  final SwiperLayout layout;
   final void Function(int index) onMovie;
+  final bool loop;
 
-  const FilmListWidget({Key key, this.movies, this.onMovie}) : super(key: key);
+  const FilmListWidget({
+    Key key,
+    @required this.movies,
+    @required this.onMovie,
+    @required this.layout,
+    @required this.loop,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +49,7 @@ class FilmListWidget extends StatelessWidget {
     }
 
     return Swiper(
+      loop: loop,
       itemBuilder: (context, index) {
         return OpenMovie(
           closedMovie: FilmCard(
@@ -55,7 +64,7 @@ class FilmListWidget extends StatelessWidget {
       itemCount: movies.length,
       viewportFraction: 0.8,
       scale: 0.9,
-      layout: SwiperLayout.CUSTOM,
+      layout: layout,
       itemWidth: 300.0,
       itemHeight: size,
       customLayoutOption: CustomLayoutOption(

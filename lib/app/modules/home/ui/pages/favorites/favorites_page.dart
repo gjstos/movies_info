@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../../../shared/components/state_widget.dart';
@@ -42,6 +43,8 @@ class _FavoritesPageState extends ModularState<FavoritesPage, FavoritesStore> {
                     );
                   }
                 },
+                layout: SwiperLayout.STACK,
+                loop: false,
               );
             },
           ),
