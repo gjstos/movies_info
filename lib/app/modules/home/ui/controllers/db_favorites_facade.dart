@@ -12,24 +12,19 @@ import '../../domain/usecase/favorites/search_favorite.dart';
 
 part 'db_favorites_facade.g.dart';
 
-const _favoritesDbBox = 'favoritesDB';
-
 @Injectable()
 class DbMoviesFacade {
   final GetAllMovies _usecaseGetAllFav = Modular.get<GetAllMovies>();
   final DeleteMovie _usecaseDeleteFav = Modular.get<DeleteMovie>();
   final InsertMovie _usecaseInsertFav = Modular.get<InsertMovie>();
   final SearchMovie _usecaseSearchFav = Modular.get<SearchMovie>();
-  Box<Movie> _favoritesBox;
+  final Box<Movie> favoritesBox;
 
   ValueNotifier<bool> shouldUpdateLists = ValueNotifier(false);
 
-  DbMoviesFacade() {
-    _favoritesBox = Hive.box(_favoritesDbBox);
-
-    if (!_favoritesBox.isOpen) {
-      Future.value(Hive.openBox<Movie>(_favoritesDbBox))
-          .then((box) => _favoritesBox = box);
+  DbMoviesFacade(this.favoritesBox) {
+    if (!favoritesBox.isOpen) {
+      Future.value(Hive.openBox<Movie>(favoritesBox.name));
     }
   }
 
@@ -44,7 +39,7 @@ class DbMoviesFacade {
 
     movie.isFav = false;
 
-    notifyListListeners(value: true);
+    shouldUpdateLists.value = true;
 
     return result.fold((l) => false, (r) {
       getFavorites();
@@ -61,16 +56,11 @@ class DbMoviesFacade {
     });
   }
 
-  bool isBaseFull() {
-    return _favoritesBox.length == 3;
-  }
+  bool isBaseFull() => favoritesBox.length == 3;
 
   Future<bool> alreadyFavorite(String textSearch) async {
     var result = await _usecaseSearchFav(textSearch);
 
     return result.fold((l) => false, (r) => r.isNotEmpty);
   }
-
-  void notifyListListeners({@required bool value}) =>
-      shouldUpdateLists.value = value;
 }

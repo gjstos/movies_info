@@ -68,7 +68,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               if (value) {
                 controller.updateMovies();
 
-                controller.facade.notifyListListeners(value: false);
+                controller.facade.shouldUpdateLists.value = false;
               }
 
               return Observer(

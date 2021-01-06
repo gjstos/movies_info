@@ -7,7 +7,7 @@ part of 'db_favorites_facade.dart';
 // **************************************************************************
 
 final $DbMoviesFacade = BindInject(
-  (i) => DbMoviesFacade(),
+  (i) => DbMoviesFacade(i<Box>()),
   singleton: true,
   lazy: true,
 );
