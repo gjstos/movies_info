@@ -9,11 +9,12 @@ class AppWidget extends StatelessWidget {
       navigatorKey: Modular.navigatorKey,
       title: 'MoviesInfo',
       theme: ThemeData(
-        textTheme: GoogleFonts.nanumGothicTextTheme(),
+        textTheme: GoogleFonts.ubuntuTextTheme(),
         accentColor: Color(0xff6C63FF),
         scaffoldBackgroundColor: Colors.black,
         appBarTheme:
             ThemeData().appBarTheme.copyWith(color: const Color(0xff272727)),
+        primaryTextTheme: GoogleFonts.ubuntuTextTheme(),
       ),
       initialRoute: '/',
       onGenerateRoute: Modular.generateRoute,

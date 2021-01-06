@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/entities/movie.dart';
+import '../pages/shared/constants.dart';
 import 'image_builder.dart';
 
 class FilmCard extends StatelessWidget {
@@ -17,7 +18,7 @@ class FilmCard extends StatelessWidget {
     var _size = MediaQuery.of(context).size.height;
 
     return Card(
-      color: Colors.black,
+      color: Colors.transparent,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
       child: _tooltip(
         message: movie.titulo,
@@ -65,11 +66,8 @@ class FilmCard extends StatelessWidget {
   Widget _tooltip({Widget child, String message, double verticalOffset = 10}) {
     return Tooltip(
       message: message,
-      textStyle: TextStyle(color: Colors.black),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-      ),
+      textStyle: defaultTooltipTextStyle,
+      decoration: defaultTooltipDecoration,
       child: child,
       verticalOffset: verticalOffset,
     );

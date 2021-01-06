@@ -44,7 +44,7 @@ class _FavoritesPageState extends ModularState<FavoritesPage, FavoritesStore> {
                   }
                 },
                 layout: SwiperLayout.STACK,
-                loop: false,
+                loop: true,
               );
             },
           ),

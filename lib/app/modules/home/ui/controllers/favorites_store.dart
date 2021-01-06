@@ -20,18 +20,28 @@ abstract class _FavoritesStoreBase with Store {
   @observable
   List<Movie> favorites = <Movie>[].asObservable();
 
+  @observable
+  Map<String, bool> sorted = {
+    'sortByRelease': false,
+    'sortByTitle': false,
+    'reverseSortByRelease': false,
+    'reverseSortByTitle': false,
+  };
+
   @action
   Future<bool> deleteMovie(Movie movie) async {
     var result = await facade.deleteFavorite(movie);
 
     movie.isFav = false;
 
+    facade.shouldUpdateLists.value = true;
+
     await getFavorites();
 
     return result;
   }
 
-  @observable
+  @action
   Future<void> getFavorites() async {
     List<Movie> result;
 
@@ -43,4 +53,46 @@ abstract class _FavoritesStoreBase with Store {
 
     favorites = List<Movie>.from(result).asObservable();
   }
+
+  @action
+  void sortByRelease({bool isReverse = false}) {
+    sorted['sortByRelease'] = isReverse;
+    sorted['reverseSortByRelease'] = !isReverse;
+  }
+
+  @action
+  void sortByTitle({bool isReverse = false}) {
+    sorted['sortByTitle'] = isReverse;
+    sorted['reverseSortByTitle'] = !isReverse;
+  }
+
+  List<Movie> favoritesSortByTitle({bool isReverse = false}) {
+    if (isReverse) {
+      favorites.sort(
+        (second, first) => first.titulo.compareTo(second.titulo),
+      );
+    } else {
+      favorites.sort(
+        (first, second) => first.titulo.compareTo(second.titulo),
+      );
+    }
+
+    return favorites;
+  }
+
+  List<Movie> favoritesSortByRelease({bool isReverse = false}) {
+    if (isReverse) {
+      favorites.sort(
+        (second, first) => _toDate(first.data).compareTo(_toDate(second.data)),
+      );
+    } else {
+      favorites.sort(
+        (first, second) => _toDate(first.data).compareTo(_toDate(second.data)),
+      );
+    }
+
+    return favorites;
+  }
+
+  String _toDate(String date) => date.split('/').reversed.join('-');
 }

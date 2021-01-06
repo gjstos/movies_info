@@ -15,6 +15,7 @@ import 'infra/repositories/movies_list_repository.dart';
 import 'ui/controllers/db_favorites_facade.dart';
 import 'ui/controllers/favorites_store.dart';
 import 'ui/controllers/home_controller.dart';
+import 'ui/controllers/movie_controller.dart';
 import 'ui/pages/home/home_page.dart';
 import 'ui/pages/movie/movie_page.dart';
 
@@ -31,6 +32,7 @@ class HomeModule extends ChildModule {
         $InsertMovie,
         $HerokuApiDatasource,
         $HomeController,
+        $MovieController,
         $MoviesListRepository,
         $DbRepository,
         $DbDatasource,

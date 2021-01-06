@@ -26,12 +26,22 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            title: Text('MoviesInfo'),
+            title: Text('MoviesInfo', style: TextStyle(color: Colors.white)),
             centerTitle: true,
             bottom: TabBar(
               tabs: [
-                Tab(text: 'EM CARTAZ'),
-                Tab(text: 'FAVORITOS'),
+                Tab(
+                  child: Text(
+                    'EM CARTAZ',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                Tab(
+                  child: Text(
+                    'FAVORITOS',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
               ],
             ),
           ),
@@ -58,7 +68,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               if (value) {
                 controller.updateMovies();
 
-                controller.facade.notifyListListeners(notify: false);
+                controller.facade.notifyListListeners(value: false);
               }
 
               return Observer(

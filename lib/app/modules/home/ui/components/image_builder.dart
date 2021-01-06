@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../pages/shared/constants.dart';
+
 class ImageBuilder extends StatelessWidget {
   final String source;
   final BoxFit fit;
@@ -34,7 +36,7 @@ class ImageBuilder extends StatelessWidget {
         return Shimmer.fromColors(
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: defaultShape.borderRadius,
               color: Color(0xff272727),
             ),
           ),

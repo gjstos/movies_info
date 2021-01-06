@@ -15,7 +15,7 @@ part 'db_favorites_facade.g.dart';
 const _favoritesDbBox = 'favoritesDB';
 
 @Injectable()
-class DbMoviesFacade extends ChangeNotifier {
+class DbMoviesFacade {
   final GetAllMovies _usecaseGetAllFav = Modular.get<GetAllMovies>();
   final DeleteMovie _usecaseDeleteFav = Modular.get<DeleteMovie>();
   final InsertMovie _usecaseInsertFav = Modular.get<InsertMovie>();
@@ -44,7 +44,7 @@ class DbMoviesFacade extends ChangeNotifier {
 
     movie.isFav = false;
 
-    await notifyListListeners(notify: true);
+    notifyListListeners(value: true);
 
     return result.fold((l) => false, (r) {
       getFavorites();
@@ -71,12 +71,6 @@ class DbMoviesFacade extends ChangeNotifier {
     return result.fold((l) => false, (r) => r.isNotEmpty);
   }
 
-  void notifyListListeners({@required bool notify}) {
-    shouldUpdateLists.value = notify;
-
-    if (notify) {
-      notifyListeners();
-      // shouldUpdateLists = ValueNotifier(!notify);
-    }
-  }
+  void notifyListListeners({@required bool value}) =>
+      shouldUpdateLists.value = value;
 }
