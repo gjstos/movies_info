@@ -24,7 +24,7 @@ void main() async {
 
   group('Insert:', () {
     test('Deve retornar true ao salvar na base de dados', () async {
-      datasource.box.clear();
+      datasource.box.deleteAll(datasource.box.keys);
 
       var result = await datasource.insertMovie(movie);
 
@@ -34,7 +34,7 @@ void main() async {
     test(
       'Deve disparar FullDatabase quando o limite de favoritos for atingido',
       () async {
-        box.clear();
+        box.deleteAll(box.keys);
 
         box.add(Movie(
           data: 'asd',
@@ -92,7 +92,7 @@ void main() async {
 
   group('Delete:', () {
     test('Deve retornar true ao remover da base de dados', () async {
-      box.clear();
+      box.deleteAll(box.keys);
 
       box.add(movie);
 
@@ -102,7 +102,7 @@ void main() async {
     });
 
     test('Deve disparar EmptyListDb quando a base está vazia', () async {
-      box.clear();
+      box.deleteAll(box.keys);
 
       expect(
         () async => datasource.deleteMovie(movie),
@@ -147,7 +147,7 @@ void main() async {
     test(
       'Deve retornar uma lista com movies quando algo for encontrado',
       () async {
-        datasource.box.clear();
+        datasource.box.deleteAll(datasource.box.keys);
 
         box.add(Movie(
           data: 'zxc',
@@ -169,6 +169,6 @@ void main() async {
 
 void initHive() async {
   var path = Directory.current.path;
-  await Hive.init('$path/test/app/modules/home/external/hive');
   Hive.registerAdapter<Movie>(MovieAdapter());
+  await Hive.init('$path/test/app');
 }
