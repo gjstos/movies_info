@@ -10,13 +10,6 @@ part 'movie_controller.g.dart';
 class MovieController {
   ValueNotifier<bool> isFullSinopse = ValueNotifier(false);
 
-  ValueNotifier<Map<String, bool>> sorted = ValueNotifier({
-    'sortByRelease': false,
-    'sortByTitle': false,
-    'reverseSortByRelease': false,
-    'reverseSortByTitle': false,
-  });
-
   void changeSinopseState() => isFullSinopse.value = !isFullSinopse.value;
 
   void launchUrl(String urlString) async {
@@ -25,16 +18,6 @@ class MovieController {
     } else {
       Fluttertoast.showToast(msg: 'Ops! Parece que há algo errado com o site.');
     }
-  }
-
-  void sortByRelease({bool isReverse = false}) {
-    sorted.value['sortByRelease'] = isReverse;
-    sorted.value['reverseSortByRelease'] = !isReverse;
-  }
-
-  void sortByTitle({bool isReverse = false}) {
-    sorted.value['sortByTitle'] = isReverse;
-    sorted.value['reverseSortByTitle'] = !isReverse;
   }
 
   void shareMovie(String link) {

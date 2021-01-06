@@ -34,21 +34,6 @@ mixin _$FavoritesStore on _FavoritesStoreBase, Store {
     });
   }
 
-  final _$sortedAtom = Atom(name: '_FavoritesStoreBase.sorted');
-
-  @override
-  Map<String, bool> get sorted {
-    _$sortedAtom.reportRead();
-    return super.sorted;
-  }
-
-  @override
-  set sorted(Map<String, bool> value) {
-    _$sortedAtom.reportWrite(value, super.sorted, () {
-      super.sorted = value;
-    });
-  }
-
   final _$deleteMovieAsyncAction =
       AsyncAction('_FavoritesStoreBase.deleteMovie');
 
@@ -65,36 +50,10 @@ mixin _$FavoritesStore on _FavoritesStoreBase, Store {
     return _$getFavoritesAsyncAction.run(() => super.getFavorites());
   }
 
-  final _$_FavoritesStoreBaseActionController =
-      ActionController(name: '_FavoritesStoreBase');
-
-  @override
-  void sortByRelease({bool isReverse = false}) {
-    final _$actionInfo = _$_FavoritesStoreBaseActionController.startAction(
-        name: '_FavoritesStoreBase.sortByRelease');
-    try {
-      return super.sortByRelease(isReverse: isReverse);
-    } finally {
-      _$_FavoritesStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void sortByTitle({bool isReverse = false}) {
-    final _$actionInfo = _$_FavoritesStoreBaseActionController.startAction(
-        name: '_FavoritesStoreBase.sortByTitle');
-    try {
-      return super.sortByTitle(isReverse: isReverse);
-    } finally {
-      _$_FavoritesStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
   @override
   String toString() {
     return '''
-favorites: ${favorites},
-sorted: ${sorted}
+favorites: ${favorites}
     ''';
   }
 }
