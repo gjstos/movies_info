@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/gjstos/movies_info.svg?branch=master)](https://travis-ci.com/gjstos/movies_info)
 # movies_info
 
 A new Flutter project. Created by Slidy
